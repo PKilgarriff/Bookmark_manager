@@ -16,6 +16,6 @@ Below is our first domain model in order to start driving the development of the
 
 After browsing the walkthrough we have also added a process model.
 
-![First Process Model](./diagrams/002-BookmarkManager-Process.png)
+![First Process Model](./diagrams/002-BookmarkManager-Process.jpg)
 
 
