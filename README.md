@@ -12,5 +12,10 @@ I'd like to see a list of bookmarks
 
 Below is our first domain model in order to start driving the development of the classes.
 
-![First Domain Model](./diagrams/001-BookmarkManager.png)
+![First Domain Model](./diagrams/001-BookmarkManager-Domain.png)
+
+After browsing the walkthrough we have also added a process model.
+
+![First Process Model](./diagrams/002-BookmarkManager-Process.png)
+
 
