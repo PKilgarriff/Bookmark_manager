@@ -1,19 +1,21 @@
 require_relative 'bookmark'
+require 'pg'
 
 class BookmarkList
   def initialize
-    @bookmarks = [
-      Bookmark.new('The Internet', 'http://www.internet.com'),
-      Bookmark.new('The Internet 2', 'http://www.also-internet.com'),
-      Bookmark.new('The Internet 3', 'http://www.still-internet.com')
-    ]
+    @bookmarks = []
   end
 
   def all
     output = []
-    @bookmarks.each do |bookmark|
-      output << "#{bookmark.name}: #{bookmark.link}"
+    database_connection_and_query.each do |bookmark|
+      output << "#{bookmark['title']}: #{bookmark['url']}"
     end
     return output
+  end
+
+  def database_connection_and_query
+    connection = PG.connect :dbname => 'bookmark_manager'
+    connection.exec "SELECT * FROM bookmarks LIMIT 5"
   end
 end

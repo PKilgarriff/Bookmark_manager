@@ -31,6 +31,6 @@ After browsing the walkthrough we have also added a process model.
 ```
 CREATE DATABASE bookmark_manager;
 \c bookmark_manager;
-CREATE TABLE bookmarks (id SERIAL,url VARCHAR(60));
+CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, title VARCHAR(60), url VARCHAR(60));
 \dt
 ```
