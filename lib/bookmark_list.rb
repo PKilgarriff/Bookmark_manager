@@ -16,6 +16,6 @@ class BookmarkList
 
   def database_connection_and_query
     connection = PG.connect :dbname => 'bookmark_manager'
-    connection.exec "SELECT * FROM bookmarks LIMIT 5"
+    connection.exec "SELECT * FROM bookmarks"
   end
 end

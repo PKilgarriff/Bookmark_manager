@@ -26,6 +26,10 @@ After browsing the walkthrough we have also added a process model.
 - Created a Unit test for an #all method of the BookmarkList class
 - Created Unit tests for #name and #link methods of the Bookmark class
 - Refactored to include Model and View in passing the feature test for the list of bookmarks
+- Created a testing database
+  - Created a helper method to setup the database
+  - and one to add default bookmarks
+
 
 ## Database setup
 ```
