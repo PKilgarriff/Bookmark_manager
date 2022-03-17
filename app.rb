@@ -13,7 +13,6 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     bookmarks = BookmarkList.new
-    p "Bookmarks: #{bookmarks}"
     @list = bookmarks.all.join('<br>')
     erb :bookmarks
   end

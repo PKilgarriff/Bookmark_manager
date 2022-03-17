@@ -15,7 +15,11 @@ class BookmarkList
   end
 
   def database_connection_and_query
-    connection = PG.connect :dbname => 'bookmark_manager'
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect :dbname => 'bookmark_manager_test'
+    else
+      connection = PG.connect :dbname => 'bookmark_manager'
+    end
     connection.exec "SELECT * FROM bookmarks"
   end
 end
