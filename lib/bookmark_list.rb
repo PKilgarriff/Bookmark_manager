@@ -8,18 +8,18 @@ class BookmarkList
 
   def all
     output = []
-    database_connection_and_query.each do |bookmark|
+    database_query.each do |bookmark|
       output << "#{bookmark['title']}: #{bookmark['url']}"
     end
     return output
   end
 
-  def database_connection_and_query
-    if ENV['RACK_ENV'] == 'test'
-      connection = PG.connect :dbname => 'bookmark_manager_test'
-    else
-      connection = PG.connect :dbname => 'bookmark_manager'
-    end
-    connection.exec "SELECT * FROM bookmarks"
+  def database_connection
+    db_name = ENV['RACK_ENV'] == 'test' ? 'bookmark_manager_test' : 'bookmark_manager'
+    connection = PG.connect(dbname: db_name)
+  end
+
+  def database_query(sql_query = "SELECT * FROM bookmarks")
+    database_connection.exec(sql_query)
   end
 end

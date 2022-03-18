@@ -29,7 +29,10 @@ After browsing the walkthrough we have also added a process model.
 - Created a testing database
   - Created a helper method to setup the database
   - and one to add default bookmarks
-
+--------
+- Split database_connection_and_setup into two methods
+  - refactor conditional into ternary
+- Added SimpleCov for checking test coverage
 
 ## Database setup
 ```
