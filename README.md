@@ -1,4 +1,8 @@
-# Bookmark_manager
+# Bookmark Manager
+
+[![Build Status](https://app.travis-ci.com/PKilgarriff/Bookmark_manager.svg?branch=main)](https://app.travis-ci.com/PKilgarriff/Bookmark_manager)
+
+A webapp written in Ruby allowing a user to store bookmarks and visit them after viewing a list of all saved bookmarks. Integrates with a PostgreSQL databse to store the required records.
 
 ## Domain Modelling
 
@@ -33,8 +37,14 @@ After browsing the walkthrough we have also added a process model.
 - Split database_connection_and_setup into two methods
   - refactor conditional into ternary
 - Added SimpleCov for checking test coverage
+- Update BookmarkList class
+  - renamed all to all_bookmarks
+  - return value is now a PG::Result object
+  - updated controller and view to reflect this change
+
 
 ## Database setup
+
 ```
 CREATE DATABASE bookmark_manager;
 \c bookmark_manager;

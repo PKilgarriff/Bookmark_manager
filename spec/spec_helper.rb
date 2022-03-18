@@ -27,7 +27,6 @@ RSpec.configure do |config|
   config.before(:each) do
     setup_test_database
     add_default_bookmarks_to_test_database
-
   end
 end
 

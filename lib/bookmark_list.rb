@@ -6,12 +6,8 @@ class BookmarkList
     @bookmarks = []
   end
 
-  def all
-    output = []
-    database_query.each do |bookmark|
-      output << "#{bookmark['title']}: #{bookmark['url']}"
-    end
-    return output
+  def all_bookmarks
+    database_query("SELECT * FROM bookmarks")
   end
 
   def database_connection

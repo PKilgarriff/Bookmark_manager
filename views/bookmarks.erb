@@ -1,1 +1,5 @@
-<p><%= @list %></p>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li><%= "#{bookmark['title']}: #{bookmark['url']}"%></li>
+  <% end %>
+</ul>

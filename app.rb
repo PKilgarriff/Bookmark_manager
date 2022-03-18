@@ -15,7 +15,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     bookmarks = BookmarkList.new
-    @list = bookmarks.all.join('<br>')
+    @bookmarks = bookmarks.all_bookmarks
     erb :bookmarks
   end
 
