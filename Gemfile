@@ -12,4 +12,6 @@ gem 'capybara'
 
 group :development, :test do
   gem "rubocop", "1.20"
+  gem 'simplecov'
+  gem 'simplecov-console'
 end

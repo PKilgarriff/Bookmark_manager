@@ -1,1 +1,5 @@
-.rubocop-https---raw-githubusercontent-com-makersacademy-scaffolint-v2-2-0--rubocop-yml
+# SimpleCov Output Folder
+/coverage
+
+# Locally cached copy of Makers Rubocop Guide
+.rubocop-https*
