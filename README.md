@@ -41,6 +41,19 @@ After browsing the walkthrough we have also added a process model.
   - renamed all to all_bookmarks
   - return value is now a PG::Result object
   - updated controller and view to reflect this change
+- Extracted database-related methods from BookmarkList into DatabaseManager class
+  - now has class methods
+    - .setup
+    - .connection
+    - .query
+- Create new User Story 'add new bookmarks'
+  - test-drive add_bookmark method for BookmarkList class
+    - unit test for general response
+    - then feature test to integrate into Controller
+  - Added new view new_bookmark.erb
+  - added get and post routes for /new-entry
+  - Updated Home Page feature test to reflect new navigation buttons and use of index.erb
+- Mocked PG dependency of DatabaseManager class
 
 
 ## Database setup
@@ -50,4 +63,18 @@ CREATE DATABASE bookmark_manager;
 \c bookmark_manager;
 CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, title VARCHAR(60), url VARCHAR(60));
 \dt
+```
+
+## User Stories
+
+```
+As a user
+So that I can visit my favourite sites
+I'd like to see a list of bookmarks
+```
+
+```
+As a user
+So that I keep a record of new favourite sites
+I'd like to be able to add a new bookmark
 ```

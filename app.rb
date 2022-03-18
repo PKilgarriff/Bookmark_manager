@@ -9,14 +9,26 @@ class BookmarkManager < Sinatra::Base
     # :nocov:
   end
 
+  before do
+    @bookmark_list = BookmarkList.new
+  end
+
   get '/' do
-    'Hello World'
+    erb :index
   end
 
   get '/bookmarks' do
-    bookmarks = BookmarkList.new
-    @bookmarks = bookmarks.all_bookmarks
+    @bookmarks = @bookmark_list.all_bookmarks
     erb :bookmarks
+  end
+
+  get '/new-bookmark' do
+    erb :new_bookmark
+  end
+
+  post '/new-bookmark' do
+    @bookmark_list.add_bookmark(params['title'], params['url'])
+    redirect '/bookmarks'
   end
 
   run! if app_file == $0

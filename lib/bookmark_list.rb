@@ -1,21 +1,18 @@
 require_relative 'bookmark'
-require 'pg'
+require_relative 'database_manager'
 
 class BookmarkList
-  def initialize
+  def initialize(database_manager = DatabaseManager)
+    @db_manager = database_manager
     @bookmarks = []
   end
 
   def all_bookmarks
-    database_query("SELECT * FROM bookmarks")
+    @db_manager.query("SELECT * FROM bookmarks")
   end
 
-  def database_connection
-    db_name = ENV['RACK_ENV'] == 'test' ? 'bookmark_manager_test' : 'bookmark_manager'
-    connection = PG.connect(dbname: db_name)
-  end
-
-  def database_query(sql_query = "SELECT * FROM bookmarks")
-    database_connection.exec(sql_query)
+  def add_bookmark(title, url)
+    sql_query = "INSERT INTO bookmarks (title, url) VALUES ('#{title}','#{url}')"
+    @db_manager.query(sql_query)
   end
 end
