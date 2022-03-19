@@ -1,7 +1,7 @@
 require 'database_manager'
 
 describe DatabaseManager do
-  let(:fake_connection) { double(:connection_double, :exec => true) }
+  let(:fake_connection) { double(:connection_double, :exec_params => true) }
   let(:fake_pg) { double(:pg_double, :connect => fake_connection) }
 
   describe '.setup' do
@@ -25,7 +25,7 @@ describe DatabaseManager do
     describe '.query' do
       it 'sends a query to the connected database' do
         DatabaseManager.query
-        expect(fake_connection).to have_received(:exec).with("SELECT * FROM bookmarks")
+        expect(fake_connection).to have_received(:exec_params).with("SELECT $1 FROM bookmarks", ['*'])
       end
     end
   end

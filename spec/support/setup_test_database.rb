@@ -11,11 +11,11 @@ end
 def add_default_bookmarks_to_test_database
   connection = PG.connect(dbname: 'bookmark_manager_test')
   defaults = [
-    "'The Internet', 'http://www.internet.com/'",
-    "'The Internet 3', 'http://www.still-internet.com/'",
-    "'The Internet 4', 'http://www.what-more-internet.com/'"
+    { 'title' => 'The Internet', 'url' => 'http://www.internet.com/' },
+    { 'title' => 'The Internet 3', 'url' => 'http://www.still-internet.com/' },
+    { 'title' => 'The Internet 4', 'url' => 'http://www.what-more-internet.com/' }
   ]
   defaults.each do |default_entry|
-    connection.exec("INSERT INTO bookmarks (title, url) VALUES (#{default_entry});")
+    connection.exec_params("INSERT INTO bookmarks (title, url) VALUES ($1, $2);", [default_entry['title'],default_entry['url']])
   end
 end

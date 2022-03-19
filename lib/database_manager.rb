@@ -10,7 +10,7 @@ class DatabaseManager
     @connection = @connection ||= setup
   end
 
-  def self.query(sql_query = "SELECT * FROM bookmarks")
-    connection.exec(sql_query)
+  def self.query(sql_query = "SELECT $1 FROM bookmarks", params = ['*'])
+    connection.exec_params(sql_query, params)
   end
 end

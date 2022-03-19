@@ -54,7 +54,12 @@ After browsing the walkthrough we have also added a process model.
   - added get and post routes for /new-entry
   - Updated Home Page feature test to reflect new navigation buttons and use of index.erb
 - Mocked PG dependency of DatabaseManager class
-
+- Rewrote view to use url as href in link instead of as text
+- Restructure return objects from database
+  - already had title and url in database
+  - need to create new object (Bookmark) to encapsulate the bookmark data
+- Update SQL queries to use exec_params instead of exec
+  - minimise risk of SQL injection
 
 ## Database setup
 

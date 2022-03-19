@@ -13,6 +13,6 @@ feature 'Add Bookmark' do
     fill_in 'title', with: title
     fill_in 'url', with: url
     click_button('Submit')
-    expect(page).to have_content("#{title}: #{url}")
+    expect(page).to have_link(title.to_s, :href => url.to_s)
   end
 end
