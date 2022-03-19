@@ -60,13 +60,24 @@ After browsing the walkthrough we have also added a process model.
   - need to create new object (Bookmark) to encapsulate the bookmark data
 - Update SQL queries to use exec_params instead of exec
   - minimise risk of SQL injection
+- Begin implementing RESTful routes
+  - index: GET /bookmarks
+  - setup new bookmark: GET /bookmarks/new
+  - create new bookmark: POST /bookmarks
+  - ~view bookmark: GET /bookmarks/:id~
+    - not used for this as link opens directly
+  - delete bookmark: DELETE /bookmarks/:id 
+    - drove creation of delete_bookmark method
+      - uses bookmark.id
+  - update views and routes accordingly
+
 
 ## Database setup
 
 ```
 CREATE DATABASE bookmark_manager;
 \c bookmark_manager;
-CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, title VARCHAR(60), url VARCHAR(60));
+CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, title VARCHAR(60), url VARCHAR(60), created timestamp with time zone default now());
 \dt
 ```
 

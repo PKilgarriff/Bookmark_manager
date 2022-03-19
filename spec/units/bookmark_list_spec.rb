@@ -23,4 +23,15 @@ describe BookmarkList do
       expect(fake_db_manager).to have_received(:query).with(sql_query, params)
     end
   end
+
+  describe '#delete_bookmark' do
+    it 'removes a bookmark from the database' do
+      id = 1
+      sql_query = "DELETE FROM bookmarks WHERE id = $1"
+      params = [id]
+      bookmark_list.delete_bookmark(id)
+      allow(fake_db_manager).to receive(:query)
+      expect(fake_db_manager).to have_received(:query).with(sql_query, params)
+    end
+  end
 end

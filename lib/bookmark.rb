@@ -1,7 +1,8 @@
 class Bookmark
-  attr_reader :title, :url
+  attr_reader :id, :title, :url
 
-  def initialize(title, url)
+  def initialize(id, title, url)
+    @id = id
     @title = title
     @url = url
   end

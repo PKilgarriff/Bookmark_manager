@@ -22,14 +22,31 @@ class BookmarkManager < Sinatra::Base
     erb :bookmarks
   end
 
-  get '/new-bookmark' do
+  get '/bookmarks/new' do
     erb :new_bookmark
   end
 
-  post '/new-bookmark' do
+  post '/bookmarks' do
     @bookmark_list.add_bookmark(params['title'], params['url'])
+    redirect '/bookmarks'
+  end
+  
+  delete '/bookmarks/:id' do
+    @bookmark_list.delete_bookmark(params[:id])
     redirect '/bookmarks'
   end
 
   run! if app_file == $0
 end
+
+=begin
+  HTTP Verb	Route	Action	Used For
+  GET	'/bookmarks'	index action	index page to display all bookmarks
+  GET	'/bookmarks/new'	new action	displays create bookmark form
+  POST	'/bookmarks'	create action	creates one bookmark
+  GET	'/bookmarks/:id'	show action	displays one bookmark based on ID in the url
+  GET	'/bookmarks/:id/edit'	edit action	displays edit form based on ID in the url
+  PATCH	'/bookmarks/:id'	update action	modifies an existing bookmark based on ID in the url
+  PUT	'/bookmarks/:id'	update action	replaces an existing bookmark based on ID in the url
+  DELETE	'/bookmarks/:id'	delete action	deletes one bookmark based on ID in the url 
+=end
