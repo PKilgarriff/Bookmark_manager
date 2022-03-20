@@ -25,7 +25,7 @@ describe DatabaseManager do
     describe '.query' do
       it 'sends a query to the connected database' do
         DatabaseManager.query
-        expect(fake_connection).to have_received(:exec_params).with("SELECT $1 FROM bookmarks", ['*'])
+        expect(fake_connection).to have_received(:exec_params).with("SELECT * FROM bookmarks", [])
       end
     end
   end

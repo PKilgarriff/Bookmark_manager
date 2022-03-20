@@ -17,10 +17,9 @@ describe BookmarkList do
     it 'adds a new bookmark to the database' do
       title, url = 'Test Bookmark', 'http://www.testing.com'
       sql_query = "INSERT INTO bookmarks (title, url) VALUES ($1, $2)"
-      params = [title, url]
       bookmark_list.add_bookmark(title, url)
       allow(fake_db_manager).to receive(:query)
-      expect(fake_db_manager).to have_received(:query).with(sql_query, params)
+      expect(fake_db_manager).to have_received(:query).with(sql_query, title, url)
     end
   end
 
@@ -28,10 +27,9 @@ describe BookmarkList do
     it 'removes a bookmark from the database' do
       id = 1
       sql_query = "DELETE FROM bookmarks WHERE id = $1"
-      params = [id]
       bookmark_list.delete_bookmark(id)
       allow(fake_db_manager).to receive(:query)
-      expect(fake_db_manager).to have_received(:query).with(sql_query, params)
+      expect(fake_db_manager).to have_received(:query).with(sql_query, id)
     end
   end
 end

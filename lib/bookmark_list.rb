@@ -9,7 +9,7 @@ class BookmarkList
   
   def all_bookmarks
     bookmarks = []
-    @db_manager.query("SELECT * FROM bookmarks", []).each do |bookmark|
+    @db_manager.query("SELECT * FROM bookmarks").each do |bookmark|
       bookmarks << @bookmark_template.new(bookmark['id'], bookmark['title'], bookmark['url'])
     end
     return bookmarks
@@ -17,11 +17,11 @@ class BookmarkList
 
   def add_bookmark(title, url)
     sql_query = "INSERT INTO bookmarks (title, url) VALUES ($1, $2)"
-    @db_manager.query(sql_query, [title, url])
+    @db_manager.query(sql_query, title, url)
   end
 
   def delete_bookmark(id)
     sql_query = "DELETE FROM bookmarks WHERE id = $1"
-    @db_manager.query(sql_query, [id])
+    @db_manager.query(sql_query, id)
   end
 end

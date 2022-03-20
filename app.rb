@@ -32,6 +32,7 @@ class BookmarkManager < Sinatra::Base
   end
   
   delete '/bookmarks/:id' do
+    p "I am in the delete route for /bookmarks/#{params[:id]}"
     @bookmark_list.delete_bookmark(params[:id])
     redirect '/bookmarks'
   end

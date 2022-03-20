@@ -94,3 +94,9 @@ As a user
 So that I keep a record of new favourite sites
 I'd like to be able to add a new bookmark
 ```
+
+```
+As a user
+So that I can remove a bookmark I no longer want
+I'd like to remove an existing bookmark
+```
